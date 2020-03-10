@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice JS</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header bg-info">
+                <h3 style="text-align: center;color:#fff;">Select class and student</h3>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <form>
+                            <div class="form-group">
+                                <label>Select class name</label>
+                                <select value="" class="form-control" id="sltclassname"
+                                    onchange="onCLassFilterChange(this)">
+                                    <option value=".net">.NET</option>
+                                    <option value="angular">Angular</option>
+                                    <option value="java">Java</option>
+                                    <option value="test">Test</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xl-6">
+                        <form>
+                            <div class="form-group">
+                                <label>Select student</label>
+                                <select class="form-control" id="sltstudent">
+
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var students = [
+            { id: 1, name: 'tran van a', className: '.net' },
+            { id: 2, name: 'tran van b', className: '.net' },
+            { id: 3, name: 'tran van c', className: 'angular' },
+            { id: 4, name: 'tran van d', className: 'angular' },
+            { id: 5, name: 'tran van e', className: 'java' },
+            { id: 6, name: 'tran van f', className: 'java' },
+            { id: 7, name: 'tran van g', className: 'java' },
+            { id: 8, name: 'tran van h', className: 'test' },
+            { id: 9, name: 'tran van i', className: 'test' },
+            { id: 10, name: 'tran van j', className: 'test' }
+        ]
+
+        function onCLassFilterChange(sltclass) {
+
+            var getValue = sltclass.options[sltclass.selectedIndex].value;
+            var names = [];
+            for (var i = 0; i < students.length; i++) {
+                if (students[i].className == getValue) {
+                    names.push(students[i].name);
+                }
+            }
+            onStudentFilterChange(names)
+
+        }
+
+        function onStudentFilterChange(names) {
+            var option = ""
+            for (var i = 0; i < names.length; i++) {
+                option += "<option value=" + names[i] + ">" + names[i] + "</option>";
+            }
+            document.getElementById("sltstudent").innerHTML = option;
+        }
+    </script>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
